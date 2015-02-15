@@ -1,0 +1,17 @@
+		<ul id="sideManu" class="nav nav-tabs nav-stacked">
+			{% load cache %}
+			{% cache 300 sidebar %}
+			{% for cat in request.root.childCategories.all %}
+				<li class="subMenu"><a>{{cat.categoryName}}</a>					
+					<ul style='display:none'>
+						{% for childCat in cat.childCategories.all %}
+							<li>
+								<a href="/estore/c/{{childCat.categoryName}}/{{childCat.categoryId}}"><i class="icon-chevron-right"></i>{{childCat.categoryName}}</a>
+							</li>
+						{% endfor %}
+					</ul>				
+				</li>
+			{% endfor %}
+			{% endcache %}
+		</ul>
+		<br/>

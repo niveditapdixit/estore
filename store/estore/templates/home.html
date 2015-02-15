@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Commerce store">
+    <meta name="author" content="">
+	{% include "global/css.html" %}
+  </head>
+<body>
+{% include "global/header.html" %}
+<div id="mainBody">
+	<div class="container">
+	<div class="row">
+		<div id="sidebar" class="span3">
+			{% include "global/sidebar.html" %}			
+		</div>		
+		<div class="span9">		
+			<div class="well well-small">
+			<h4>Featured Products </h4>
+			<div class="row-fluid">
+			<div id="featured" class="carousel slide">
+			<div class="carousel-inner">
+			  {% for fp in featuredProducts%}
+			  	{% if forloop.first %}
+			  	<div class="item active">
+			  	<ul class="thumbnails">
+			  	{% elif forloop.counter0|divisibleby:4 %}
+			  	<div class="item">
+			  	<ul class="thumbnails">			  				  	
+			  	{% endif %}			  
+				<li class="span3">
+				  <div class="thumbnail">
+				  <i class="tag"></i>
+					<a href="/estore/p/{{fp.partNumber}}/{{fp.productId}}"><img src="/estore/prodimages/{{fp.productId}}.jpg" alt="{{fp.partNumber}}"></a>
+					<div class="caption">
+					  <h5>{{fp.partNumber}}</h5>
+					  <h4><a class="btn" href="/estore/p/{{fp.partNumber}}/{{fp.productId}}">VIEW</a> <span class="pull-right"><i class="icon-inr"></i> {{fp.price|floatformat:2}}</span></h4>
+					</div>
+				  </div>
+				</li>		
+			  	{% if forloop.counter|divisibleby:4 %}
+			  	</ul>
+			  	</div>			  	
+			  	{% endif %}			  					  	
+			  {% endfor %}
+			  </div>
+			  <a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
+			  <a class="right carousel-control" href="#featured" data-slide="next">›</a>
+			  </div>
+			  </div>
+		</div>
+		<h4>Best Sellers</h4>
+			  <ul class="thumbnails">
+			  {% for prod in bestSellers%}
+				<li class="span3">
+				  <div class="thumbnail">
+					<a  href="/estore/p/{{prod.partNumber}}/{{prod.productId}}"><img src="/estore/prodimages/{{prod.productId}}.jpg" alt="{{prod.partNumber}}" style="max-width:160px;max-height:160px;"/></a>
+					<div class="caption">
+					  <h5>{{prod.partNumber}}</h5>
+					  <p> 
+						<!-- Description goes here -->
+					  </p>
+					 
+					  <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a>
+					   <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><i class="icon-inr"></i> {{prod.price|floatformat:2}}</a></h4>
+					</div>
+				  </div>
+				</li>			  
+			  {% endfor %}
+			  </ul>	
+
+		</div>
+		</div>
+	</div>
+</div>
+{% include "global/footer.html"%}
+{% include "global/scripts.html"%}
+</body>
+</html>

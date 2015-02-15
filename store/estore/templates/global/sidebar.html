@@ -1,0 +1,11 @@
+		<div class="well well-small">
+			<a id="myCart" href="#"><img src="/static/themes/images/ico-cart.png" alt="cart">No Items in your cart  <span class="badge badge-warning pull-right"><i class="icon-inr icon-white"></i> 0.00</span></a>
+		</div>
+		{% include "global/allcategories.html" %}
+		  <div class="thumbnail">
+			<img src="/estore/prodimages/{{request.targetProd.productId}}.jpg" alt="Bootshop panasonoc New camera" style="max-width:123px"/>
+			<div class="caption">
+			  <h5>{{request.targetProd.partNumber}}</h5>
+				<h4 style="text-align:center"><a class="btn" href="/estore/p/{{request.targetProd.partNumber}}/{{request.targetProd.productId}}"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="/estore/p/{{request.targetProd.partNumber}}/{{request.targetProd.productId}}"><i class="icon-inr"></i> {{request.targetProd.price|floatformat:2}}</a></h4>
+			</div>
+		  </div><br/>

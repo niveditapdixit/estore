@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Estore | Home Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+</head>
+<body>
+	{% include "global/css.html" %} {% include "global/header.html" %}
+	<div id="mainBody">
+		<div class="container">
+			<div class="row">
+				<div id="sidebar" class="span3">{% include 	"global/sidebar.html" %}</div>
+				<div class="span9">
+					<ul class="breadcrumb">
+						<li><a href="/estore/">Home</a> <span class="divider">/</span></li>
+						<li>Products <span
+							class="divider">/</span></li>
+						<li class="active">Product Details</li>
+					</ul>
+					<div class="row">
+						<div id="gallery" class="span3">
+								<img src="/estore/prodimages/{{product.productId}}.jpg" style="width: 100%" alt="{{product.partNumber}}" />
+
+						</div>
+						<div class="span6">
+							<h3>{{product.partNumber}}</h3>
+							<hr class="soft" />
+							<form class="form-horizontal qtyFrm">
+								<div class="control-group">
+									<label class="control-label"><span><i class="icon-inr"></i>{{product.price|floatformat:2}}</span></label>
+									<div class="controls">
+										<input type="number" class="span1" placeholder="Qty." />
+										<button type="submit"
+											class="btn btn-large btn-primary pull-right">
+											Add to cart <i class=" icon-shopping-cart"></i>
+										</button>
+									</div>
+								</div>
+							</form>
+								<hr class="soft"/>
+								<h4>{{ product.stock }} items in stock</h4>
+
+							<hr class="soft clr" />
+							<p>{{ product.description.longDescription}}</p>
+							<a class="btn btn-small pull-right" href="#detail">More
+								Details</a> <br class="clr" /> <a href="#" name="detail"></a>
+							<hr class="soft" />
+						</div>
+
+						<div class="span9">
+							<ul id="productDetail" class="nav nav-tabs">
+								<li class="active"><a href="#home" data-toggle="tab">Product
+										Details</a></li>
+							</ul>
+							<div id="myTabContent" class="tab-content">
+								<div class="tab-pane fade active in" id="home">
+									<h4>Product Information</h4>
+									<table class="table table-bordered">
+										<tbody>
+											<tr class="techSpecRow">
+												<th colspan="2">Product Details</th>
+											</tr>
+											<tr class="techSpecRow">
+												<td class="techSpecTD1">Display Name:</td>
+												<td class="techSpecTD2">{{ product.displayName}}</td>
+											</tr>
+											<tr class="techSpecRow">
+												<td class="techSpecTD1">Short Description:</td>
+												<td class="techSpecTD2">{{ product.shortDescription}}</td>
+											</tr>
+											<tr class="techSpecRow">
+												<td class="techSpecTD1">Long Description</td>
+												<td class="techSpecTD2">{{ product.longDescription}}</td>
+											</tr>
+											<tr class="techSpecRow">
+												<td class="techSpecTD1">Type:</td>
+												<td class="techSpecTD2">{{ product.type}}</td>
+											</tr>
+										</tbody>
+									</table>
+
+								</div>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		{% include "global/footer.html"%} {% include "global/scripts.html"%}
+</body>
+</html>

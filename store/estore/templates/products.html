@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Estore | {{ catName }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ catName }}">
+<meta name="author" content="">
+</head>
+<body>
+	{% include "global/css.html" %} {% include "global/header.html" %}
+	<div id="mainBody">
+		<div class="container">
+			<div class="row">
+				<div id="sidebar" class="span3">
+				{% include "global/sidebar.html" %}</div>
+				<div class="span9">
+					<ul class="breadcrumb">
+						<li><a href="/estore/">Home</a> <span class="divider">/</span></li>
+						<li class="active">{{ catName }} </li>
+					</ul>
+					<h3>
+						 {{ catName }}  <small class="pull-right"> {{ products.count }} products are
+							available </small>
+					</h3>
+					<div class="tab-pane  active" id="blockView">
+						<ul class="thumbnails">
+					{% for prod in products %}
+							<li class="span3">
+								<div class="thumbnail">
+									<a href="/estore/p/{{prod.partNumber}}/{{prod.productId}}">
+									<img style="max-width:160px;max-height:160px" src="/estore/prodimages/{{prod.productId}}.jpg" alt="{{prod.partNumber}}">
+									</a>
+									<div class="caption">
+										<h5>{{prod.partNumber}}</h5>
+										<h4 style="text-align: center">
+											<a class="btn" href="/estore/p/{{prod.partNumber}}/{{prod.productId}}"> <i
+												class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to
+												<i class="icon-shopping-cart"></i>
+											</a> <a class="btn btn-primary" href="#"><i class="icon-inr"></i> {{prod.price|floatformat:2}}</a>
+										</h4>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		{% include "global/footer.html"%} {% include "global/scripts.html"%}
+</body>
+</html>
