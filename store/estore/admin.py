@@ -20,7 +20,7 @@ class CategoryAdmin(admin.ModelAdmin):
         ('displayName', {'fields': ['displayName']}),
         ('shortDescription', {'fields': ['shortDescription']}),
         ('longDescription', {'fields': ['longDescription']}),
-        ('thumbNail', {'fields': ['thumbNail']}),
+		('thumbNail' ,               {'fields': ['thumbNail']}),
         ('fullImage', {'fields': ['fullImage']}),
     ]
     search_fields = ('categoryId', 'categoryName')

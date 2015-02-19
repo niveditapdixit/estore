@@ -35,6 +35,7 @@ class Category(models.Model):
     longDescription = models.CharField(max_length = 45)    
     thumbNail = models.ImageField(upload_to='images/', null=True, blank=True) 
     fullImage = models.ImageField(upload_to='images/', null=True, blank=True)
+    fullimagePath= models.CharField(max_length = 100)
     childCategories = models.ManyToManyField("self", through="CategoryXRef", symmetrical=False)
     childProducts = models.ManyToManyField(Product, through="CategoryChildProducts")
     def childCategoryNames(self):
@@ -79,11 +80,13 @@ class ProductDescription(models.Model):
     shortDescription = models.CharField(max_length = 45)
     longDescription = models.CharField(max_length = 45)
     thumbNail = models.ImageField(upload_to='images/', null=True, blank=True)
-    fullImage = models.ImageField(upload_to='images/', null=True, blank=True)
+    fullImage = models.ImageField(upload_to='estore/prodimages/', null=True, blank=True)
+    fullimagePath= models.CharField(max_length = 100)	
     type = models.CharField(max_length = 45)
 
     def __str__(self):
         return self.partNumber		
+
     class Meta:
         db_table = 'productDescription'            
         
