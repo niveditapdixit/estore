@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^products.json/(?P<product_id>\d+)$', views.getJSONProduct, name="getJSONProduct"),
     url(r'c/.+/(?P<categoryId>\d+)$',views.productListing, name='productListing'),
     url(r'p/.+/(?P<productId>\d+)$',views.productDetail, name='productDetail'),
+	url(r'^register$',views.register, name='register'),
 )

@@ -50,3 +50,8 @@ def productDetail(request, productId):
 def getJSONProduct(request, product_id):
     product = Product.objects.get(pk = product_id)
     return HttpResponse(json.dumps(product, cls=encoders.ProductEncoder), content_type="application/json")
+	
+def register(request):
+    return render(request,'register.html', content_type='text/html') 	
+	 
+	

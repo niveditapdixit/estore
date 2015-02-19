@@ -110,7 +110,17 @@ class Customer(models.Model):
     firstName = models.CharField(max_length = 45)
     lastName = models.CharField(max_length = 45)
     shippingAddress = models.CharField(max_length = 1000)
-    billingAddress = models.CharField(max_length = 1000)
+    billingAddress = models.CharField(max_length = 1000, default="nivedita")
+    addressline2 = models.CharField(max_length = 1000, default="nivedita")
+    city = models.CharField(max_length = 45,  default="nivedita")
+    country = models.CharField(max_length = 20,  default="nivedita")
+    state = models.CharField(max_length = 20,  default="nivedita")	
+    zipCode = models.CharField(max_length = 10,  default="nivedita")	
+    homePhone = models.IntegerField(max_length=10 , default=12345)
+    mobilePhone = models.IntegerField(max_length=10, default=12345)
+    emailId =  models.CharField(max_length = 45 , default="nivedita@infosys.com")
+    password = models.CharField(max_length = 45, default="Infy2015")
+	
 
     def __str__(self):
         return self.firstName	
