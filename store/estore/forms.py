@@ -16,3 +16,7 @@ class RegistrationForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 	
     class Meta: Customer	
+
+class UserForm(forms.Form):
+     userName = forms.EmailField()
+     password = forms.CharField(widget=forms.PasswordInput)	 

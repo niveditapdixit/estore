@@ -11,4 +11,6 @@ urlpatterns = patterns('',
     url(r'c/.+/(?P<categoryId>\d+)$',views.productListing, name='productListing'),
     url(r'p/.+/(?P<productId>\d+)$',views.productDetail, name='productDetail'),
 	url(r'^register$',views.register, name='register'),
+    url(r'^login$', views.login,name='login'),
+    url(r'^logout$', views.logout,name='logout'),	
 )

@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.cache import cache_control
 from django.utils import timezone
 from django.db.models import Max
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 
 from estore.models import Product
 from estore.models import Category
@@ -74,19 +74,25 @@ def register(request):
         return render(request,'register.html', {'form': form}) 
 
 def login(request):
-        user = Customer.objects.get(emailId=request.POST['username'])
-        request.session['username'] = user.firstName
+        username = request.POST.get('userName')
+        password = request.POST.get('password')
+        #user = authenticate(username=username, password=password)
+        #if user is not None:
+        #  if user.is_active:
+        #        login(request, user)		   
+        customer = Customer.objects.get(emailId='nivedita_dixit@infosys.com')
+        request.session['username'] = customer.firstName
             # get all featured products from db
         featuredProducts = Product.objects.filter(type="ProductBean").filter(featured="Y").all()
            # get the top 6 best sellers 
-         bestSellers = Product.objects.filter(type="ProductBean").filter(salesRank__isnull=False).order_by("salesRank")[:6]            		
+        bestSellers = Product.objects.filter(type="ProductBean").filter(salesRank__isnull=False).order_by("salesRank")[:6]            		
         return render(request, "home.html", {"featuredProducts": featuredProducts, "bestSellers": bestSellers}, content_type='text/html')
 
 def logout(request):
             # get all featured products from db
         featuredProducts = Product.objects.filter(type="ProductBean").filter(featured="Y").all()
            # get the top 6 best sellers 
-         bestSellers = Product.objects.filter(type="ProductBean").filter(salesRank__isnull=False).order_by("salesRank")[:6]            		
+        bestSellers = Product.objects.filter(type="ProductBean").filter(salesRank__isnull=False).order_by("salesRank")[:6]            		
         return render(request, "home.html", {"featuredProducts": featuredProducts, "bestSellers": bestSellers}, content_type='text/html')
 	
 	
